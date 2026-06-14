@@ -1,0 +1,69 @@
+﻿@model List<OrganicDesignPatterns.WebUI.Models.ProductCardViewModel>
+
+<section class="pt-5 pb-4">
+    <div class="container">
+        <div class="section_title text-center mb-5">
+            <span class="sub_title text-uppercase fw-bold" style="color:#81c408;">
+                Organic Products
+            </span>
+            <h2 class="title_text mb-3">
+                Product Scenario Showcase
+            </h2>
+            <p class="mx-auto" style="max-width:720px;">
+                These sample products are used to demonstrate CQRS, Repository, Unit of Work and design pattern scenarios.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var product in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="fw-bold text-success">@product.CategoryName</span>
+
+                            @if (product.IsFeatured)
+                            {
+                                <span class="badge bg-success">Featured</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Standard</span>
+                            }
+                        </div>
+
+                        <h4>@product.Name</h4>
+
+                        <p>@product.Description</p>
+
+                        <div class="mb-3">
+                            @if (product.DiscountedPrice.HasValue)
+                            {
+                                <span class="text-muted text-decoration-line-through me-2">
+                                    $@product.Price
+                                </span>
+                                <span class="fw-bold text-success">
+                                    $@product.DiscountedPrice
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="fw-bold text-success">
+                                    $@product.Price
+                                </span>
+                            }
+                        </div>
+
+                        <p class="small mb-4">
+                            Stock: <strong>@product.Stock</strong>
+                        </p>
+
+                        <a href="/PatternLab" class="btn btn-outline-success mt-auto">
+                            View Pattern Usage
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

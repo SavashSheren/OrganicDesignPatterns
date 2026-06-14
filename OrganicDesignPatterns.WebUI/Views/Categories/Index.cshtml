@@ -1,0 +1,37 @@
+﻿@model List<OrganicDesignPatterns.WebUI.Models.CategoryCardViewModel>
+
+<section class="pt-5 pb-4">
+    <div class="container">
+        <div class="section_title text-center mb-5">
+            <span class="sub_title text-uppercase fw-bold" style="color:#81c408;">
+                Organic Categories
+            </span>
+            <h2 class="title_text mb-3">
+                Category Showcase
+            </h2>
+            <p class="mx-auto" style="max-width:720px;">
+                These categories represent the organic e-commerce scenario used to demonstrate enterprise design patterns.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var category in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h4 class="mb-0">@category.Name</h4>
+                            <span class="badge bg-success">@category.BadgeText</span>
+                        </div>
+
+                        <p>@category.Description</p>
+
+                        <a href="/PatternLab" class="btn btn-outline-success mt-auto">
+                            View Pattern Scenario
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

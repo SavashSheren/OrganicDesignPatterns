@@ -5,6 +5,7 @@ using OrganicDesignPatterns.Application.Behaviors;
 using OrganicDesignPatterns.Application.DesignPatterns.Strategy;
 using System.Reflection;
 using OrganicDesignPatterns.Application.DesignPatterns.Factory;
+using OrganicDesignPatterns.Application.DesignPatterns.Observer;
 
 namespace OrganicDesignPatterns.Application;
 
@@ -33,6 +34,11 @@ public static class ServiceRegistration
         services.AddScoped<MailTemplateCreator, DeliveredOrderMailTemplateCreator>();
         services.AddScoped<MailTemplateCreator, CancelledOrderMailTemplateCreator>();
         services.AddScoped<MailTemplateFactoryContext>();
+
+        services.AddScoped<IOrderApprovedObserver, EmailNotificationObserver>();
+        services.AddScoped<IOrderApprovedObserver, StockMovementObserver>();
+        services.AddScoped<IOrderApprovedObserver, NotificationLogObserver>();
+        services.AddScoped<IOrderApprovedSubject, OrderApprovedSubject>();
 
         return services;
     }

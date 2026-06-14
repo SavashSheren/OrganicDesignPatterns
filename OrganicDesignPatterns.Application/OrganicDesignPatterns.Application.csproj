@@ -22,7 +22,6 @@
     <Folder Include="DesignPatterns\ChainOfResponsibility\" />
     <Folder Include="DesignPatterns\Facade\" />
     <Folder Include="DesignPatterns\Adapter\" />
-    <Folder Include="DesignPatterns\Observer\" />
     <Folder Include="Features\Commands\" />
     <Folder Include="Features\Queries\" />
     <Folder Include="Mapping\" />

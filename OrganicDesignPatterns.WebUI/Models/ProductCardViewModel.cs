@@ -15,4 +15,6 @@ public class ProductCardViewModel
     public int Stock { get; set; }
 
     public bool IsFeatured { get; set; }
+
+    public string ImageUrl { get; set; } = string.Empty;
 }

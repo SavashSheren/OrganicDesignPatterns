@@ -7,4 +7,6 @@ public class CategoryCardViewModel
     public string Description { get; set; } = string.Empty;
 
     public string BadgeText { get; set; } = string.Empty;
+
+    public string ImageUrl { get; set; } = string.Empty;
 }

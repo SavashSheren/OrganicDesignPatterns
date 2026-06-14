@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using OrganicDesignPatterns.Application.Behaviors;
+using OrganicDesignPatterns.Application.DesignPatterns.Strategy;
 using System.Reflection;
 
 namespace OrganicDesignPatterns.Application;
@@ -18,6 +19,11 @@ public static class ServiceRegistration
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+        services.AddScoped<IDiscountStrategy, NoDiscountStrategy>();
+        services.AddScoped<IDiscountStrategy, PercentageDiscountStrategy>();
+        services.AddScoped<IDiscountStrategy, FixedAmountDiscountStrategy>();
+        services.AddScoped<DiscountStrategyContext>();
 
         return services;
     }

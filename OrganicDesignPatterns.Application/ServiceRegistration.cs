@@ -6,6 +6,7 @@ using OrganicDesignPatterns.Application.DesignPatterns.Strategy;
 using System.Reflection;
 using OrganicDesignPatterns.Application.DesignPatterns.Factory;
 using OrganicDesignPatterns.Application.DesignPatterns.Observer;
+using OrganicDesignPatterns.Application.DesignPatterns.ChainOfResponsibility;
 
 namespace OrganicDesignPatterns.Application;
 
@@ -39,6 +40,8 @@ public static class ServiceRegistration
         services.AddScoped<IOrderApprovedObserver, StockMovementObserver>();
         services.AddScoped<IOrderApprovedObserver, NotificationLogObserver>();
         services.AddScoped<IOrderApprovedSubject, OrderApprovedSubject>();
+
+        services.AddScoped<OrderValidationChainBuilder>();
 
         return services;
     }

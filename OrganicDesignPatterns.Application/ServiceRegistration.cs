@@ -1,5 +1,7 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using OrganicDesignPatterns.Application.Behaviors;
 using System.Reflection;
 
 namespace OrganicDesignPatterns.Application;
@@ -12,6 +14,10 @@ public static class ServiceRegistration
         {
             configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
         });
+
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
         return services;
     }

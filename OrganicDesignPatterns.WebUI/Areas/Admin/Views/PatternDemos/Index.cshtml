@@ -1,0 +1,283 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Pattern Demos";
+    ViewData["Subtitle"] = "Enterprise design pattern scenario registry";
+
+    var patterns = new[]
+    {
+        new
+        {
+            Code = "S",
+            Name = "Strategy Pattern",
+            Scenario = "Discount Calculation",
+            Description = "Calculates percentage, fixed amount and no-discount flows with interchangeable strategy classes.",
+            Endpoint = "POST /api/Discounts/calculate",
+            Status = "Active"
+        },
+        new
+        {
+            Code = "D",
+            Name = "Decorator Pattern",
+            Scenario = "Shipping Extras",
+            Description = "Adds fast delivery, gift package and cold chain services without modifying the base calculator.",
+            Endpoint = "POST /api/Shipping/calculate",
+            Status = "Active"
+        },
+        new
+        {
+            Code = "F",
+            Name = "Factory Method",
+            Scenario = "Mail Template Generation",
+            Description = "Creates the correct mail template according to the selected order status.",
+            Endpoint = "POST /api/MailTemplates/generate",
+            Status = "Active"
+        },
+        new
+        {
+            Code = "O",
+            Name = "Observer Pattern",
+            Scenario = "Order Approval Event",
+            Description = "Triggers email notification, stock movement and notification logging after approval.",
+            Endpoint = "POST /api/OrderEvents/approve",
+            Status = "Active"
+        },
+        new
+        {
+            Code = "C",
+            Name = "Chain of Responsibility",
+            Scenario = "Order Validation Flow",
+            Description = "Validates customer, basket, stock, payment and shipping address step by step.",
+            Endpoint = "POST /api/OrderValidation/validate",
+            Status = "Active"
+        },
+        new
+        {
+            Code = "R",
+            Name = "Repository + Unit of Work",
+            Scenario = "Data Access Abstraction",
+            Description = "Centralizes data access and transaction handling over EF Core and SQL Server.",
+            Endpoint = "GET /api/Products",
+            Status = "Core"
+        }
+    };
+}
+
+<div class="premium-hero">
+    <div class="premium-hero-grid">
+        <div>
+            <div class="admin-kicker">
+                Pattern Demo Registry
+            </div>
+
+            <h1 class="premium-title">
+                Enterprise Pattern Scenario Management
+            </h1>
+
+            <p class="premium-desc">
+                Centralized admin registry for all implemented design pattern scenarios.
+                Each scenario is mapped to a real WebAPI endpoint and demonstrated through the public Pattern Lab.
+            </p>
+
+            <div class="premium-actions">
+                <a href="/PatternLab/Index" class="premium-btn">
+                    Open Public Pattern Lab
+                </a>
+
+                <a href="/Admin/Dashboard/Index" class="premium-btn outline">
+                    Back to Dashboard
+                </a>
+            </div>
+        </div>
+
+        <div class="premium-score-card">
+            <div class="score-value">6</div>
+            <div class="score-label">Registered Pattern Modules</div>
+
+            <div class="score-bars">
+                <div class="score-bar"><span style="width:100%"></span></div>
+                <div class="score-bar"><span style="width:90%"></span></div>
+                <div class="score-bar"><span style="width:84%"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-top">
+            <div class="stat-icon-wrap green"></div>
+            <span class="stat-change up">Behavioral</span>
+        </div>
+        <div class="stat-val">5</div>
+        <div class="stat-label">Business Pattern Scenarios</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-top">
+            <div class="stat-icon-wrap gold"></div>
+            <span class="stat-change up">Core</span>
+        </div>
+        <div class="stat-val">3</div>
+        <div class="stat-label">Architecture Patterns</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-top">
+            <div class="stat-icon-wrap blue"></div>
+            <span class="stat-change up">API</span>
+        </div>
+        <div class="stat-val">6</div>
+        <div class="stat-label">Demo Endpoints</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-top">
+            <div class="stat-icon-wrap red"></div>
+            <span class="stat-change up">Ready</span>
+        </div>
+        <div class="stat-val">100%</div>
+        <div class="stat-label">Pattern Lab Coverage</div>
+    </div>
+</div>
+
+<div class="demo-flow-strip">
+    <div class="demo-flow-item">
+        <strong>Controller</strong>
+        <span>Receives API request</span>
+    </div>
+
+    <div class="demo-flow-item">
+        <strong>MediatR</strong>
+        <span>Routes command/query</span>
+    </div>
+
+    <div class="demo-flow-item">
+        <strong>Handler</strong>
+        <span>Executes business case</span>
+    </div>
+
+    <div class="demo-flow-item">
+        <strong>Pattern</strong>
+        <span>Applies design logic</span>
+    </div>
+
+    <div class="demo-flow-item">
+        <strong>Response</strong>
+        <span>Returns demo result</span>
+    </div>
+</div>
+
+<div class="demo-grid">
+    @foreach (var pattern in patterns)
+    {
+        <div class="demo-card">
+            <div class="demo-card-header">
+                <div class="demo-index">@pattern.Code</div>
+                <span class="demo-status">@pattern.Status</span>
+            </div>
+
+            <h3 class="demo-title">@pattern.Name</h3>
+
+            <div class="demo-scenario">
+                <strong style="color:var(--text-primary);">@pattern.Scenario</strong>
+                <br />
+                @pattern.Description
+            </div>
+
+            <div class="demo-endpoint">
+                <span>Endpoint</span>
+                <code>@pattern.Endpoint</code>
+            </div>
+
+            <div class="demo-footer">
+                <a href="/PatternLab/Index" class="demo-link">
+                    View public demo
+                </a>
+
+                <span class="status-pill active">
+                    Testable
+                </span>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="bottom-grid">
+    <div class="table-card">
+        <div class="table-header">
+            <div>
+                <div class="chart-title">Pattern Demo Registry Table</div>
+                <div class="chart-sub">Admin overview of testable design pattern endpoints</div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Pattern</th>
+                    <th>Scenario</th>
+                    <th>Endpoint</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var pattern in patterns)
+                {
+                    <tr>
+                        <td>
+                            <div class="td-img">
+                                <div class="prod-thumb">@pattern.Code</div>
+                                <div>
+                                    <div class="prod-name">@pattern.Name</div>
+                                    <div style="font-size:11px;color:var(--text-muted)">Design Pattern</div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td style="color:var(--text-secondary)">
+                            @pattern.Scenario
+                        </td>
+
+                        <td>
+                            <code style="color:var(--accent-text)">
+                                @pattern.Endpoint
+                            </code>
+                        </td>
+
+                        <td>
+                            <span class="status-pill active">@pattern.Status</span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="activity-card">
+        <div class="activity-title">Admin Review Notes</div>
+
+        <div class="activity-list">
+            <div class="activity-item">
+                <div class="activity-dot green"></div>
+                <div class="activity-text">
+                    <strong>Pattern isolation</strong> keeps every algorithm or behavior in its own focused class.
+                </div>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-dot gold"></div>
+                <div class="activity-text">
+                    <strong>Swagger-first testing</strong> makes every pattern scenario easy to verify.
+                </div>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-dot blue"></div>
+                <div class="activity-text">
+                    <strong>Admin registry</strong> gives the project a premium portfolio presentation layer.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

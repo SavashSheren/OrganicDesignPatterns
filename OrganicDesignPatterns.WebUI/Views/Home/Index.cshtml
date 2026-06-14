@@ -1,8 +1,138 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<section class="hero_section pt-5 pb-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="hero_content">
+                    <span class="text-uppercase fw-bold" style="color:#81c408;">
+                        ASP.NET CORE MVC + WEB API
+                    </span>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+                    <h1 class="display-4 fw-bold mt-3 mb-3">
+                        Organic Design Patterns
+                    </h1>
+
+                    <p class="mb-4" style="font-size:18px; max-width:560px;">
+                        A focused Clean Architecture project demonstrating enterprise design patterns through organic e-commerce business scenarios.
+                    </p>
+
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="/PatternLab" class="btn btn-success px-4 py-3 fw-bold">
+                            Open Pattern Lab
+                        </a>
+
+                        <a href="/swagger" class="btn btn-outline-dark px-4 py-3 fw-bold">
+                            View API
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 text-center mt-5 mt-lg-0">
+                <div class="card border-0 shadow-sm p-4">
+                    <h5 class="text-success fw-bold mb-3">Project Architecture</h5>
+
+                    <div class="row text-start">
+                        <div class="col-6 mb-3">
+                            <strong>Clean Architecture</strong>
+                            <p class="mb-0 small">Domain, Application, Persistence, Infrastructure</p>
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <strong>CQRS + MediatR</strong>
+                            <p class="mb-0 small">Commands, Queries and Handlers</p>
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <strong>Repository</strong>
+                            <p class="mb-0 small">Generic data access abstraction</p>
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <strong>Unit of Work</strong>
+                            <p class="mb-0 small">Central transaction management</p>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <p class="mb-0">
+                        <span class="badge bg-success me-2">Strategy</span>
+                        <span class="badge bg-success me-2">Decorator</span>
+                        <span class="badge bg-success me-2">Factory</span>
+                        <span class="badge bg-success me-2">Observer</span>
+                        <span class="badge bg-success">Chain</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="product_section pt-5 pb-5" style="background:#f8f9fa;">
+    <div class="container">
+        <div class="section_title text-center mb-5">
+            <span class="sub_title text-uppercase fw-bold" style="color:#81c408;">
+                Pattern Scenarios
+            </span>
+            <h2 class="title_text mb-0">
+                Implemented Design Patterns
+            </h2>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm p-4">
+                    <span class="fw-bold text-success mb-2">Strategy Pattern</span>
+                    <h4>Discount Calculation</h4>
+                    <p>Percentage, fixed amount and no-discount calculation strategies.</p>
+                    <a href="/PatternLab" class="btn btn-outline-success mt-auto">Test Scenario</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm p-4">
+                    <span class="fw-bold text-success mb-2">Decorator Pattern</span>
+                    <h4>Shipping Extras</h4>
+                    <p>Fast delivery, gift package and cold chain services added dynamically.</p>
+                    <a href="/PatternLab" class="btn btn-outline-success mt-auto">Test Scenario</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm p-4">
+                    <span class="fw-bold text-success mb-2">Factory Method</span>
+                    <h4>Mail Templates</h4>
+                    <p>Order status based mail template generation with factory creators.</p>
+                    <a href="/PatternLab" class="btn btn-outline-success mt-auto">Test Scenario</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm p-4">
+                    <span class="fw-bold text-success mb-2">Observer Pattern</span>
+                    <h4>Order Events</h4>
+                    <p>Email notification, stock movement and notification log triggered after approval.</p>
+                    <a href="/PatternLab" class="btn btn-outline-success mt-auto">Test Scenario</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm p-4">
+                    <span class="fw-bold text-success mb-2">Chain of Responsibility</span>
+                    <h4>Order Validation</h4>
+                    <p>Customer, basket, stock, payment and address validation flow.</p>
+                    <a href="/PatternLab" class="btn btn-outline-success mt-auto">Test Scenario</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm p-4">
+                    <span class="fw-bold text-success mb-2">Repository + Unit of Work</span>
+                    <h4>Data Access</h4>
+                    <p>Generic repository and unit of work abstraction over EF Core.</p>
+                    <a href="/PatternLab" class="btn btn-outline-success mt-auto">View Architecture</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

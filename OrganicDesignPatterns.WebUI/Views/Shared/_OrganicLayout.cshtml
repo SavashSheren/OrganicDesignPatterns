@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Organic Design Patterns">
+    <meta name="keywords" content="Organic, Design Patterns, ASP.NET Core, Clean Architecture">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Design Patterns</title>
+    <link rel="stylesheet" href="/organic-html/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/organic-html/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/organic-html/assets/css/nice-select.css">
+    <link rel="stylesheet" href="/organic-html/assets/css/slick.css">
+    <link rel="stylesheet" href="/organic-html/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/organic-html/assets/css/meanmenu.css">
+    <link rel="stylesheet" href="/organic-html/assets/css/default.css">
+    <link rel="stylesheet" href="/organic-html/assets/css/style.css">
+    <link rel="stylesheet" href="/organic-html/assets/css/responsive.css">
+</head>
+
+<div class="body-wrap overflow-hidden">
+
+    <div class="backtotop">
+        <a href="#!" class="scroll">
+            <i class="fas fa-arrow-up fw-bold"></i>
+        </a>
+    </div>
+
+    <header class="header_section header_1">
+        <div class="top_header_main d-none d-sm-block">
+            <div class="container">
+                <div class="header_top d-flex align-items-center justify-content-between">
+                    <div class="header_top_content d-flex pt-2">
+                        <div class="mail_text_content d-flex me-4">
+                            <p class="mail_icon">
+                                <span><i class="far fa-envelope text-white pe-2"></i></span>
+                            </p>
+                            <p class="mail_text">organicpatterns@example.com</p>
+                        </div>
+
+                        <div class="address_text_content d-flex">
+                            <p class="mail_icon">
+                                <span><i class="fas fa-code text-white pe-2"></i></span>
+                            </p>
+                            <p class="address_text">Clean Architecture & Design Patterns</p>
+                        </div>
+                    </div>
+
+                    <div class="header_top_socials pt-2">
+                        <ul class="list-unstyled d-flex">
+                            <li><a href="#"><i class="fab fa-github text-white pe-3"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in text-white"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header_bottom_main">
+            <div class="container">
+                <div class="webMenu d-none d-lg-block position-relative">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand position-relative" href="/">
+                            <img src="/organic-html/assets/images/logo/logo.png" alt="Organic Design Patterns">
+                        </a>
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav main_menu_list m-auto after_navbar">
+                                <li class="nav-item px-2">
+                                    <a class="nav-link active" href="/">Home</a>
+                                </li>
+
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="/PatternLab">Pattern Lab</a>
+                                </li>
+
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="/Products">Products</a>
+                                </li>
+
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="/Categories">Categories</a>
+                                </li>
+
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="/swagger">API</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="navbar_user me-2">
+                            <div class="navbar_user_icon">
+                                <ul class="list-unstyled d-flex mb-0">
+                                    <li>
+                                        <a href="/PatternLab" class="main-btn bg-green text-white text-uppercase">
+                                            Pattern Lab
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="mobileMenu d-block d-lg-none">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="/">
+                            <img src="/organic-html/assets/images/logo/logo.png" alt="Organic Design Patterns">
+                        </a>
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#mobileMenuContent" aria-controls="mobileMenuContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="mobileMenuContent">
+                            <ul class="navbar-nav main_menu_list m-auto">
+                                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/PatternLab">Pattern Lab</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Products">Products</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Categories">Categories</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/swagger">API</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+</html>

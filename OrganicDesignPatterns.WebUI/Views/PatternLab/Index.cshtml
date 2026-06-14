@@ -1,16 +1,26 @@
-﻿<section class="pt-5 pb-4">
+﻿@model List<OrganicDesignPatterns.WebUI.Models.PatternDemoCardViewModel>
+
+<section class="pt-5 pb-4">
     <div class="container">
         <div class="section_title text-center mb-5">
             <span class="sub_title text-uppercase fw-bold" style="color:#81c408;">
                 Pattern Lab
             </span>
+
             <h2 class="title_text mb-3">
                 Design Pattern Demo Center
             </h2>
-            <p class="mx-auto" style="max-width:720px;">
+
+            <p class="mx-auto" style="max-width:760px;">
                 This page demonstrates enterprise design patterns through focused organic e-commerce business scenarios.
-                Each scenario is implemented in the backend with CQRS, MediatR and clean architecture.
+                Each scenario is implemented with Clean Architecture, CQRS, MediatR and testable WebAPI endpoints.
             </p>
+
+            <div class="mt-4">
+                <a href="/swagger" class="btn btn-success px-4 py-3 fw-bold">
+                    Open Swagger API
+                </a>
+            </div>
         </div>
     </div>
 </section>
@@ -18,206 +28,53 @@
 <section class="pb-5">
     <div class="container">
         <div class="row g-4">
+            @foreach (var demo in Model)
+            {
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <span class="fw-bold text-success">
+                                    @demo.PatternName
+                                </span>
 
-            <div class="col-lg-6">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
-                        <div>
-                            <span class="fw-bold text-success">Strategy Pattern</span>
-                            <h3 class="mt-2">Discount Calculation</h3>
+                                <h3 class="mt-2 mb-0">
+                                    @demo.ScenarioName
+                                </h3>
+                            </div>
+
+                            <span class="badge bg-success">
+                                @demo.BadgeText
+                            </span>
                         </div>
-                        <span class="badge bg-success">Completed</span>
-                    </div>
 
-                    <p>
-                        Calculates discount amounts using different strategies such as percentage discount,
-                        fixed amount discount and no-discount strategy.
-                    </p>
+                        <p class="text-muted">
+                            @demo.Description
+                        </p>
 
-                    <div class="bg-light p-3 rounded mb-3">
-                        <strong>Endpoint:</strong>
-                        <code>POST /api/Discounts/calculate</code>
-                    </div>
-
-                    <ul class="mb-4">
-                        <li>PercentageDiscountStrategy</li>
-                        <li>FixedAmountDiscountStrategy</li>
-                        <li>NoDiscountStrategy</li>
-                    </ul>
-
-                    <a href="/swagger" class="btn btn-outline-success">
-                        Test in Swagger
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
-                        <div>
-                            <span class="fw-bold text-success">Decorator Pattern</span>
-                            <h3 class="mt-2">Shipping Extras</h3>
+                        <div class="bg-light p-3 rounded mb-3">
+                            <strong>Endpoint:</strong>
+                            <code>@demo.Endpoint</code>
                         </div>
-                        <span class="badge bg-success">Completed</span>
-                    </div>
 
-                    <p>
-                        Adds extra shipping services dynamically on top of the base shipping cost without modifying
-                        the original calculator.
-                    </p>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <h6 class="fw-bold">Sample Request</h6>
+                                <pre class="bg-dark text-white p-3 rounded small mb-0" style="min-height:220px; white-space:pre-wrap;">@demo.RequestSample</pre>
+                            </div>
 
-                    <div class="bg-light p-3 rounded mb-3">
-                        <strong>Endpoint:</strong>
-                        <code>POST /api/Shipping/calculate</code>
-                    </div>
-
-                    <ul class="mb-4">
-                        <li>Base Shipping</li>
-                        <li>Fast Delivery Decorator</li>
-                        <li>Gift Package Decorator</li>
-                        <li>Cold Chain Package Decorator</li>
-                    </ul>
-
-                    <a href="/swagger" class="btn btn-outline-success">
-                        Test in Swagger
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
-                        <div>
-                            <span class="fw-bold text-success">Factory Method</span>
-                            <h3 class="mt-2">Mail Template Generation</h3>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold">Sample Response</h6>
+                                <pre class="bg-dark text-white p-3 rounded small mb-0" style="min-height:220px; white-space:pre-wrap;">@demo.ResponseSample</pre>
+                            </div>
                         </div>
-                        <span class="badge bg-success">Completed</span>
+
+                        <a href="/swagger" class="btn btn-outline-success mt-4">
+                            Test This Scenario
+                        </a>
                     </div>
-
-                    <p>
-                        Generates the correct mail template according to the order status.
-                        Each order status has its own template creator.
-                    </p>
-
-                    <div class="bg-light p-3 rounded mb-3">
-                        <strong>Endpoint:</strong>
-                        <code>POST /api/MailTemplates/generate</code>
-                    </div>
-
-                    <ul class="mb-4">
-                        <li>Pending Order Template</li>
-                        <li>Approved Order Template</li>
-                        <li>Preparing Order Template</li>
-                        <li>Shipped Order Template</li>
-                        <li>Delivered Order Template</li>
-                        <li>Cancelled Order Template</li>
-                    </ul>
-
-                    <a href="/swagger" class="btn btn-outline-success">
-                        Test in Swagger
-                    </a>
                 </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
-                        <div>
-                            <span class="fw-bold text-success">Observer Pattern</span>
-                            <h3 class="mt-2">Order Approval Event</h3>
-                        </div>
-                        <span class="badge bg-success">Completed</span>
-                    </div>
-
-                    <p>
-                        When an order is approved, multiple observers are triggered automatically:
-                        email notification, stock movement and notification log.
-                    </p>
-
-                    <div class="bg-light p-3 rounded mb-3">
-                        <strong>Endpoint:</strong>
-                        <code>POST /api/OrderEvents/approve</code>
-                    </div>
-
-                    <ul class="mb-4">
-                        <li>EmailNotificationObserver</li>
-                        <li>StockMovementObserver</li>
-                        <li>NotificationLogObserver</li>
-                    </ul>
-
-                    <a href="/swagger" class="btn btn-outline-success">
-                        Test in Swagger
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
-                        <div>
-                            <span class="fw-bold text-success">Chain of Responsibility</span>
-                            <h3 class="mt-2">Order Validation Flow</h3>
-                        </div>
-                        <span class="badge bg-success">Completed</span>
-                    </div>
-
-                    <p>
-                        Validates an order step by step. If one validation handler fails,
-                        the chain stops and returns the failed step.
-                    </p>
-
-                    <div class="bg-light p-3 rounded mb-3">
-                        <strong>Endpoint:</strong>
-                        <code>POST /api/OrderValidation/validate</code>
-                    </div>
-
-                    <ul class="mb-4">
-                        <li>CustomerInfoValidationHandler</li>
-                        <li>BasketValidationHandler</li>
-                        <li>StockValidationHandler</li>
-                        <li>PaymentValidationHandler</li>
-                        <li>ShippingAddressValidationHandler</li>
-                    </ul>
-
-                    <a href="/swagger" class="btn btn-outline-success">
-                        Test in Swagger
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
-                        <div>
-                            <span class="fw-bold text-success">Architecture Patterns</span>
-                            <h3 class="mt-2">Repository + Unit of Work + CQRS</h3>
-                        </div>
-                        <span class="badge bg-success">Core</span>
-                    </div>
-
-                    <p>
-                        The project uses a clean architecture structure with Domain, Application,
-                        Persistence, Infrastructure, WebAPI and WebUI layers.
-                    </p>
-
-                    <div class="bg-light p-3 rounded mb-3">
-                        <strong>Flow:</strong>
-                        <code>Controller → MediatR → Handler → UnitOfWork → Repository → EF Core</code>
-                    </div>
-
-                    <ul class="mb-4">
-                        <li>Generic Repository</li>
-                        <li>Unit of Work</li>
-                        <li>CQRS with MediatR</li>
-                        <li>FluentValidation Pipeline</li>
-                    </ul>
-
-                    <a href="/swagger" class="btn btn-outline-success">
-                        View API
-                    </a>
-                </div>
-            </div>
-
+            }
         </div>
     </div>
 </section>

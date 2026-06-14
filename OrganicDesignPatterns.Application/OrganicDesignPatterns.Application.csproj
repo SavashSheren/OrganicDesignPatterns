@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="DesignPatterns\ChainOfResponsibility\" />
-    <Folder Include="DesignPatterns\Factory\" />
     <Folder Include="DesignPatterns\Facade\" />
     <Folder Include="DesignPatterns\Adapter\" />
     <Folder Include="DesignPatterns\Observer\" />

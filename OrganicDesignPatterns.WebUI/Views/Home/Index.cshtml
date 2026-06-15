@@ -1,66 +1,135 @@
-﻿<section class="hero_section pt-5 pb-5">
+﻿<section class="hero_section sec_ptb_100" style="background:#fff;">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center g-5">
             <div class="col-lg-6">
-                <div class="hero_content">
-                    <span class="text-uppercase fw-bold" style="color:#81c408;">
-                        ASP.NET CORE MVC + WEB API
-                    </span>
+                <span class="sub_title text-uppercase fw-bold" style="color:#81c408;">
+                    ASP.NET Core MVC + Web API
+                </span>
 
-                    <h1 class="display-4 fw-bold mt-3 mb-3">
-                        Organic Design Patterns
-                    </h1>
+                <h1 class="mt-3 mb-4" style="font-size:58px;font-weight:900;line-height:1.1;">
+                    Organic Design Patterns
+                </h1>
 
-                    <p class="mb-4" style="font-size:18px; max-width:560px;">
-                        A focused Clean Architecture project demonstrating enterprise design patterns through organic e-commerce business scenarios.
-                    </p>
+                <p class="mb-4" style="font-size:18px;line-height:1.8;color:#5f6f5f;">
+                    A Clean Architecture portfolio project demonstrating enterprise design patterns
+                    through real organic e-commerce scenarios including product listing, basket,
+                    checkout, admin order management and interactive pattern demos.
+                </p>
 
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="/PatternLab" class="btn btn-success px-4 py-3 fw-bold">
-                            Open Pattern Lab
-                        </a>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="/Products/Index" class="btn btn-success px-4 py-3">
+                        Shop Demo Products
+                    </a>
 
-                        <a href="/swagger" class="btn btn-outline-dark px-4 py-3 fw-bold">
-                            View API
-                        </a>
-                    </div>
+                    <a href="/PatternLab/Index" class="btn btn-outline-success px-4 py-3">
+                        Open Pattern Lab
+                    </a>
+
+                    <a href="/Admin/Dashboard/Index" class="btn btn-dark px-4 py-3">
+                        Admin Dashboard
+                    </a>
                 </div>
             </div>
 
-            <div class="col-lg-6 text-center mt-5 mt-lg-0">
-                <div class="card border-0 shadow-sm p-4">
-                    <h5 class="text-success fw-bold mb-3">Project Architecture</h5>
-
-                    <div class="row text-start">
-                        <div class="col-6 mb-3">
-                            <strong>Clean Architecture</strong>
-                            <p class="mb-0 small">Domain, Application, Persistence, Infrastructure</p>
+            <div class="col-lg-6">
+                <div class="p-4 shadow-sm"
+                     style="border-radius:30px;background:#f8faf5;position:relative;overflow:hidden;">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-7">
+                            <img src="/organic-html/assets/images/product/product18.png"
+                                 alt="Organic Basket"
+                                 style="width:100%;max-height:420px;object-fit:contain;" />
                         </div>
 
-                        <div class="col-6 mb-3">
-                            <strong>CQRS + MediatR</strong>
-                            <p class="mb-0 small">Commands, Queries and Handlers</p>
-                        </div>
+                        <div class="col-5">
+                            <div class="bg-white p-4 shadow-sm mb-3" style="border-radius:22px;">
+                                <small class="text-muted d-block mb-1">Architecture</small>
+                                <strong>Clean Architecture</strong>
+                            </div>
 
-                        <div class="col-6 mb-3">
-                            <strong>Repository</strong>
-                            <p class="mb-0 small">Generic data access abstraction</p>
-                        </div>
+                            <div class="bg-white p-4 shadow-sm mb-3" style="border-radius:22px;">
+                                <small class="text-muted d-block mb-1">Patterns</small>
+                                <strong>Strategy · Decorator · Observer</strong>
+                            </div>
 
-                        <div class="col-6 mb-3">
-                            <strong>Unit of Work</strong>
-                            <p class="mb-0 small">Central transaction management</p>
+                            <div class="bg-white p-4 shadow-sm" style="border-radius:22px;">
+                                <small class="text-muted d-block mb-1">Flow</small>
+                                <strong>Basket → Checkout → Admin Orders</strong>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                    <hr />
+<section class="sec_ptb_100" style="background:#f8faf5;">
+    <div class="container">
+        <div class="section_title text-center mb-5">
+            <span class="sub_title text-uppercase fw-bold" style="color:#81c408;">
+                Project Flow
+            </span>
 
-                    <p class="mb-0">
-                        <span class="badge bg-success me-2">Strategy</span>
-                        <span class="badge bg-success me-2">Decorator</span>
-                        <span class="badge bg-success me-2">Factory</span>
-                        <span class="badge bg-success me-2">Observer</span>
-                        <span class="badge bg-success">Chain</span>
+            <h2 class="title_text mb-3">
+                Full Demo E-Commerce Flow
+            </h2>
+
+            <p class="mx-auto" style="max-width:760px;color:#6c756c;">
+                The project is not only a pattern sample. It includes a complete demo shopping flow
+                connected with admin order management and design pattern explanations.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="bg-white shadow-sm h-100 p-4 text-center" style="border-radius:24px;">
+                    <div class="mb-3 mx-auto"
+                         style="width:72px;height:72px;border-radius:22px;background:#eaf8e7;display:flex;align-items:center;justify-content:center;">
+                        <span style="font-size:32px;">🥬</span>
+                    </div>
+                    <h5>Products</h5>
+                    <p class="text-muted mb-0">
+                        Visual product showcase with prices, stock and pattern usage.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="bg-white shadow-sm h-100 p-4 text-center" style="border-radius:24px;">
+                    <div class="mb-3 mx-auto"
+                         style="width:72px;height:72px;border-radius:22px;background:#eaf8e7;display:flex;align-items:center;justify-content:center;">
+                        <span style="font-size:32px;">🛒</span>
+                    </div>
+                    <h5>Basket</h5>
+                    <p class="text-muted mb-0">
+                        Session-based basket flow with quantity and order summary.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="bg-white shadow-sm h-100 p-4 text-center" style="border-radius:24px;">
+                    <div class="mb-3 mx-auto"
+                         style="width:72px;height:72px;border-radius:22px;background:#eaf8e7;display:flex;align-items:center;justify-content:center;">
+                        <span style="font-size:32px;">✅</span>
+                    </div>
+                    <h5>Checkout</h5>
+                    <p class="text-muted mb-0">
+                        Demo checkout page representing real order creation process.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="bg-white shadow-sm h-100 p-4 text-center" style="border-radius:24px;">
+                    <div class="mb-3 mx-auto"
+                         style="width:72px;height:72px;border-radius:22px;background:#eaf8e7;display:flex;align-items:center;justify-content:center;">
+                        <span style="font-size:32px;">⚙️</span>
+                    </div>
+                    <h5>Admin Orders</h5>
+                    <p class="text-muted mb-0">
+                        Premium admin order center with approve/cancel actions.
                     </p>
                 </div>
             </div>
@@ -68,69 +137,223 @@
     </div>
 </section>
 
-<section class="product_section pt-5 pb-5" style="background:#f8f9fa;">
+<section class="sec_ptb_100 bg-white">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div class="section_title mb-4">
+                    <span class="sub_title text-uppercase fw-bold" style="color:#81c408;">
+                        Architecture
+                    </span>
+
+                    <h2 class="title_text mb-3">
+                        Clean Architecture Meets Design Patterns
+                    </h2>
+
+                    <p style="color:#6c756c;line-height:1.8;">
+                        The solution separates Domain, Application, Persistence, Infrastructure,
+                        WebAPI and WebUI layers. Each design pattern is implemented through focused
+                        organic e-commerce business scenarios.
+                    </p>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="p-4 shadow-sm" style="border-radius:20px;background:#f8faf5;">
+                            <h6>CQRS + MediatR</h6>
+                            <p class="text-muted mb-0 small">
+                                Commands and queries are separated through handlers.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="p-4 shadow-sm" style="border-radius:20px;background:#f8faf5;">
+                            <h6>Repository Pattern</h6>
+                            <p class="text-muted mb-0 small">
+                                Generic data access abstraction over EF Core.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="p-4 shadow-sm" style="border-radius:20px;background:#f8faf5;">
+                            <h6>Unit of Work</h6>
+                            <p class="text-muted mb-0 small">
+                                Centralized transaction management.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="p-4 shadow-sm" style="border-radius:20px;background:#f8faf5;">
+                            <h6>Validation Pipeline</h6>
+                            <p class="text-muted mb-0 small">
+                                FluentValidation behavior integrated with MediatR.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="shadow-sm p-5" style="border-radius:30px;background:#101010;color:#fff;">
+                    <h4 class="mb-4 text-white">
+                        Request Pipeline
+                    </h4>
+
+                    <div class="d-grid gap-3">
+                        <div class="p-3" style="background:#1a1a1a;border-radius:16px;">
+                            Controller
+                        </div>
+
+                        <div class="p-3" style="background:#1a1a1a;border-radius:16px;">
+                            MediatR
+                        </div>
+
+                        <div class="p-3" style="background:#1a1a1a;border-radius:16px;">
+                            Command / Query Handler
+                        </div>
+
+                        <div class="p-3" style="background:#1a1a1a;border-radius:16px;">
+                            Unit of Work + Repository
+                        </div>
+
+                        <div class="p-3" style="background:#1a1a1a;border-radius:16px;">
+                            EF Core + SQL Server
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sec_ptb_100" style="background:#f8faf5;">
     <div class="container">
         <div class="section_title text-center mb-5">
             <span class="sub_title text-uppercase fw-bold" style="color:#81c408;">
                 Pattern Scenarios
             </span>
-            <h2 class="title_text mb-0">
+
+            <h2 class="title_text mb-3">
                 Implemented Design Patterns
             </h2>
         </div>
 
         <div class="row g-4">
             <div class="col-lg-4 col-md-6">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <span class="fw-bold text-success mb-2">Strategy Pattern</span>
+                <div class="bg-white shadow-sm h-100 p-4" style="border-radius:24px;">
+                    <span class="badge bg-success mb-3">Strategy Pattern</span>
                     <h4>Discount Calculation</h4>
-                    <p>Percentage, fixed amount and no-discount calculation strategies.</p>
-                    <a href="/PatternLab" class="btn btn-outline-success mt-auto">Test Scenario</a>
+                    <p class="text-muted">
+                        Percentage, fixed amount and no-discount calculation strategies.
+                    </p>
+                    <a href="/PatternLab/Index" class="btn btn-outline-success w-100">
+                        Test Scenario
+                    </a>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <span class="fw-bold text-success mb-2">Decorator Pattern</span>
+                <div class="bg-white shadow-sm h-100 p-4" style="border-radius:24px;">
+                    <span class="badge bg-success mb-3">Decorator Pattern</span>
                     <h4>Shipping Extras</h4>
-                    <p>Fast delivery, gift package and cold chain services added dynamically.</p>
-                    <a href="/PatternLab" class="btn btn-outline-success mt-auto">Test Scenario</a>
+                    <p class="text-muted">
+                        Fast delivery, gift package and cold chain services added dynamically.
+                    </p>
+                    <a href="/PatternLab/Index" class="btn btn-outline-success w-100">
+                        Test Scenario
+                    </a>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <span class="fw-bold text-success mb-2">Factory Method</span>
+                <div class="bg-white shadow-sm h-100 p-4" style="border-radius:24px;">
+                    <span class="badge bg-success mb-3">Factory Method</span>
                     <h4>Mail Templates</h4>
-                    <p>Order status based mail template generation with factory creators.</p>
-                    <a href="/PatternLab" class="btn btn-outline-success mt-auto">Test Scenario</a>
+                    <p class="text-muted">
+                        Order status based mail template generation with factory creators.
+                    </p>
+                    <a href="/PatternLab/Index" class="btn btn-outline-success w-100">
+                        Test Scenario
+                    </a>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <span class="fw-bold text-success mb-2">Observer Pattern</span>
-                    <h4>Order Events</h4>
-                    <p>Email notification, stock movement and notification log triggered after approval.</p>
-                    <a href="/PatternLab" class="btn btn-outline-success mt-auto">Test Scenario</a>
+                <div class="bg-white shadow-sm h-100 p-4" style="border-radius:24px;">
+                    <span class="badge bg-success mb-3">Observer Pattern</span>
+                    <h4>Order Approval Event</h4>
+                    <p class="text-muted">
+                        Approval event triggers stock movement, notification and mail observers.
+                    </p>
+                    <a href="/Admin/Orders/Index" class="btn btn-outline-success w-100">
+                        View Order Flow
+                    </a>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <span class="fw-bold text-success mb-2">Chain of Responsibility</span>
+                <div class="bg-white shadow-sm h-100 p-4" style="border-radius:24px;">
+                    <span class="badge bg-success mb-3">Chain of Responsibility</span>
                     <h4>Order Validation</h4>
-                    <p>Customer, basket, stock, payment and address validation flow.</p>
-                    <a href="/PatternLab" class="btn btn-outline-success mt-auto">Test Scenario</a>
+                    <p class="text-muted">
+                        Customer, basket, stock, payment and address validation flow.
+                    </p>
+                    <a href="/Checkout/Index" class="btn btn-outline-success w-100">
+                        Checkout Flow
+                    </a>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <span class="fw-bold text-success mb-2">Repository + Unit of Work</span>
-                    <h4>Data Access</h4>
-                    <p>Generic repository and unit of work abstraction over EF Core.</p>
-                    <a href="/PatternLab" class="btn btn-outline-success mt-auto">View Architecture</a>
+                <div class="bg-white shadow-sm h-100 p-4" style="border-radius:24px;">
+                    <span class="badge bg-success mb-3">Repository + Unit of Work</span>
+                    <h4>Data Access Layer</h4>
+                    <p class="text-muted">
+                        Clean data abstraction and transaction management.
+                    </p>
+                    <a href="/Products/Index" class="btn btn-outline-success w-100">
+                        Browse Products
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sec_ptb_100 bg-white">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+                <img src="/organic-html/assets/images/product/product24.png"
+                     alt="Organic Product"
+                     style="width:100%;max-height:420px;object-fit:contain;" />
+            </div>
+
+            <div class="col-lg-7">
+                <span class="sub_title text-uppercase fw-bold" style="color:#81c408;">
+                    Final Showcase
+                </span>
+
+                <h2 class="title_text mb-3">
+                    More Than a Pattern Sample
+                </h2>
+
+                <p style="color:#6c756c;line-height:1.8;">
+                    This project combines backend architecture, WebAPI endpoints, UI showcase,
+                    session basket, checkout flow and premium admin order management in one portfolio-ready solution.
+                </p>
+
+                <div class="d-flex gap-3 flex-wrap mt-4">
+                    <a href="/Products/Index" class="btn btn-success px-4 py-3">
+                        Start Shopping Demo
+                    </a>
+
+                    <a href="/Admin/Orders/Index" class="btn btn-outline-success px-4 py-3">
+                        View Admin Orders
+                    </a>
                 </div>
             </div>
         </div>

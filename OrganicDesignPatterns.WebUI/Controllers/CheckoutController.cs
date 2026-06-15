@@ -1,0 +1,67 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using OrganicDesignPatterns.WebUI.Extensions;
+using OrganicDesignPatterns.WebUI.Models;
+
+namespace OrganicDesignPatterns.WebUI.Controllers;
+
+public class CheckoutController : Controller
+{
+    private const string BasketSessionKey = "OrganicBasket";
+
+    public IActionResult Index()
+    {
+        var basketItems = GetBasketItems();
+
+        if (!basketItems.Any())
+        {
+            return RedirectToAction("Index", "Basket");
+        }
+
+        var subtotal = basketItems.Sum(x => x.TotalPrice);
+        var shippingCost = subtotal >= 300 ? 0 : 25;
+
+        var model = new CheckoutViewModel
+        {
+            BasketItems = basketItems,
+            Subtotal = subtotal,
+            ShippingCost = shippingCost,
+            TotalPrice = subtotal + shippingCost
+        };
+
+        return View(model);
+    }
+
+    [HttpPost]
+    public IActionResult Complete(CheckoutViewModel model)
+    {
+        var basketItems = GetBasketItems();
+
+        if (!basketItems.Any())
+        {
+            return RedirectToAction("Index", "Basket");
+        }
+
+        var subtotal = basketItems.Sum(x => x.TotalPrice);
+        var shippingCost = subtotal >= 300 ? 0 : 25;
+        var totalPrice = subtotal + shippingCost;
+
+        TempData["OrderNumber"] = $"ORD-{DateTime.Now:yyyyMMddHHmmss}";
+        TempData["CustomerName"] = model.FullName;
+        TempData["TotalPrice"] = totalPrice.ToString("0.00");
+
+        HttpContext.Session.Remove(BasketSessionKey);
+
+        return RedirectToAction("Success");
+    }
+
+    public IActionResult Success()
+    {
+        return View();
+    }
+
+    private List<BasketItemViewModel> GetBasketItems()
+    {
+        return HttpContext.Session.GetObjectFromJson<List<BasketItemViewModel>>(BasketSessionKey)
+               ?? new List<BasketItemViewModel>();
+    }
+}

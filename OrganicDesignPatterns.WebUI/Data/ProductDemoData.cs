@@ -54,7 +54,7 @@ public static class ProductDemoData
                 DiscountedPrice = 399,
                 Stock = 15,
                 IsFeatured = true,
-                ImageUrl = "/organic-html/assets/images/product/product16.png"
+               ImageUrl = "/organic-html/assets/images/product/product25.png"
             },
             new()
             {
@@ -78,7 +78,7 @@ public static class ProductDemoData
                 DiscountedPrice = null,
                 Stock = 60,
                 IsFeatured = false,
-                ImageUrl = "/organic-html/assets/images/product/product24.png"
+                ImageUrl = "/organic-html/assets/images/product/product28.png"
             }
         };
     }

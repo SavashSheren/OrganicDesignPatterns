@@ -1,0 +1,184 @@
+﻿@model OrganicDesignPatterns.WebUI.Models.CheckoutViewModel
+
+<section class="checkout_section sec_ptb_100">
+    <div class="container">
+        <div class="section_title text-center mb-5">
+            <span class="sub_title text-uppercase fw-bold" style="color:#81c408;">
+                Organic Checkout
+            </span>
+
+            <h2 class="title_text mb-3">
+                Checkout Demo Flow
+            </h2>
+
+            <p class="mx-auto" style="max-width:720px;">
+                This page completes the demo shopping flow and represents where Chain of Responsibility,
+                Observer and Factory Method scenarios can be connected in a real order process.
+            </p>
+        </div>
+
+        <form asp-controller="Checkout" asp-action="Complete" method="post">
+            <div class="row g-4">
+                <div class="col-lg-7">
+                    <div class="bg-white shadow-sm p-4" style="border-radius:24px;">
+                        <h4 class="mb-4">Customer Information</h4>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Full Name</label>
+                                <input asp-for="FullName"
+                                       class="form-control"
+                                       required
+                                       placeholder="John Carter" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input asp-for="Email"
+                                       type="email"
+                                       class="form-control"
+                                       required
+                                       placeholder="customer@example.com" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Phone</label>
+                                <input asp-for="Phone"
+                                       class="form-control"
+                                       required
+                                       placeholder="+90 555 000 00 00" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Payment Method</label>
+                                <select asp-for="PaymentMethod" class="form-control">
+                                    <option>Credit Card</option>
+                                    <option>Bank Transfer</option>
+                                    <option>Cash on Delivery</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Shipping Address</label>
+                                <textarea asp-for="ShippingAddress"
+                                          class="form-control"
+                                          rows="5"
+                                          required
+                                          placeholder="Enter delivery address..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white shadow-sm p-4 mt-4" style="border-radius:24px;">
+                        <h4 class="mb-3">Pattern Usage in This Flow</h4>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="p-3 h-100" style="background:#f8faf5;border-radius:16px;">
+                                    <strong>Chain of Responsibility</strong>
+                                    <p class="text-muted mb-0 small">
+                                        Validates customer, basket, stock, payment and shipping address.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-3 h-100" style="background:#f8faf5;border-radius:16px;">
+                                    <strong>Observer Pattern</strong>
+                                    <p class="text-muted mb-0 small">
+                                        Can trigger stock movement, email notification and order logs.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-3 h-100" style="background:#f8faf5;border-radius:16px;">
+                                    <strong>Factory Method</strong>
+                                    <p class="text-muted mb-0 small">
+                                        Generates order status based mail templates.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-3 h-100" style="background:#f8faf5;border-radius:16px;">
+                                    <strong>Unit of Work</strong>
+                                    <p class="text-muted mb-0 small">
+                                        Represents transactional order persistence.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="bg-white shadow-sm p-4" style="border-radius:24px;">
+                        <h4 class="mb-4">Order Summary</h4>
+
+                        @foreach (var item in Model.BasketItems)
+                        {
+                            <div class="d-flex align-items-center gap-3 pb-3 mb-3 border-bottom">
+                                <div style="width:86px;height:76px;background:#f8faf5;border-radius:14px;display:flex;align-items:center;justify-content:center;padding:12px;">
+                                    <img src="@item.ImageUrl"
+                                         alt="@item.ProductName"
+                                         style="max-width:100%;max-height:62px;object-fit:contain;" />
+                                </div>
+
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">@item.ProductName</h6>
+                                    <small class="text-muted">
+                                        Qty: @item.Quantity × $@item.UnitPrice
+                                    </small>
+                                </div>
+
+                                <strong class="text-success">
+                                    $@item.TotalPrice
+                                </strong>
+                            </div>
+                        }
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Subtotal</span>
+                            <strong>$@Model.Subtotal</strong>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Shipping</span>
+
+                            @if (Model.ShippingCost == 0)
+                            {
+                                <strong class="text-success">Free</strong>
+                            }
+                            else
+                            {
+                                <strong>$@Model.ShippingCost</strong>
+                            }
+                        </div>
+
+                        <hr />
+
+                        <div class="d-flex justify-content-between mb-4">
+                            <span class="fw-bold fs-5">Total</span>
+                            <strong class="text-success fs-4">$@Model.TotalPrice</strong>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 py-3">
+                            Complete Demo Order
+                        </button>
+
+                        <a href="/Basket/Index" class="btn btn-outline-success w-100 py-3 mt-3">
+                            Back to Basket
+                        </a>
+
+                        <div class="p-3 mt-4" style="background:#f8faf5;border-radius:16px;">
+                            <small class="text-muted">
+                                This is a portfolio demo checkout. No real payment is processed.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

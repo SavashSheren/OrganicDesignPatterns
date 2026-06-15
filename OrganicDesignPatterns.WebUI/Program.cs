@@ -2,7 +2,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddHttpClient("OrganicApi", client =>
+{
+    var baseUrl = builder.Configuration["ApiSettings:BaseUrl"];
+    client.BaseAddress = new Uri(baseUrl!);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,5 +1,98 @@
 ﻿@model List<OrganicDesignPatterns.WebUI.Models.PatternDemoCardViewModel>
 
+
+
+<section class="py-5" style="background:#070713;border-radius:24px;margin-bottom:40px;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="badge bg-success px-3 py-2 mb-3">
+                Interactive API Demo Center
+            </span>
+
+            <h2 class="text-white fw-bold">
+                Run Design Patterns with Real WebAPI Calls
+            </h2>
+
+            <p class="text-white-50">
+                This panel sends live requests from WebUI to OrganicDesignPatterns.WebAPI and displays real JSON responses.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="p-4 h-100" style="background:#12142b;border:1px solid rgba(119,214,255,.18);border-radius:20px;">
+                    <h4 class="text-white">Strategy Pattern</h4>
+                    <p class="text-white-50">Discount calculation with dynamic strategy selection.</p>
+
+                    <button class="btn btn-success"
+                            onclick="runPatternDemo('/PatternLabApi/RunDiscount', 'strategyResult')">
+                        Run Live Demo
+                    </button>
+
+                    <pre id="strategyResult"
+                         class="mt-3 p-3"
+                         style="background:#070713;color:#77D6FF;border-radius:14px;min-height:180px;white-space:pre-wrap;font-size:13px;">
+Waiting for live result...
+                    </pre>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="p-4 h-100" style="background:#12142b;border:1px solid rgba(119,214,255,.18);border-radius:20px;">
+                    <h4 class="text-white">Decorator Pattern</h4>
+                    <p class="text-white-50">Shipping cost calculation with optional extra services.</p>
+
+                    <button class="btn btn-success"
+                            onclick="runPatternDemo('/PatternLabApi/RunShipping', 'decoratorResult')">
+                        Run Live Demo
+                    </button>
+
+                    <pre id="decoratorResult"
+                         class="mt-3 p-3"
+                         style="background:#070713;color:#77D6FF;border-radius:14px;min-height:180px;white-space:pre-wrap;font-size:13px;">
+Waiting for live result...
+                    </pre>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="p-4 h-100" style="background:#12142b;border:1px solid rgba(119,214,255,.18);border-radius:20px;">
+                    <h4 class="text-white">Factory Method</h4>
+                    <p class="text-white-50">Mail template generation according to order status.</p>
+
+                    <button class="btn btn-success"
+                            onclick="runPatternDemo('/PatternLabApi/RunMailTemplate', 'factoryResult')">
+                        Run Live Demo
+                    </button>
+
+                    <pre id="factoryResult"
+                         class="mt-3 p-3"
+                         style="background:#070713;color:#77D6FF;border-radius:14px;min-height:180px;white-space:pre-wrap;font-size:13px;">
+Waiting for live result...
+                    </pre>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="p-4 h-100" style="background:#12142b;border:1px solid rgba(119,214,255,.18);border-radius:20px;">
+                    <h4 class="text-white">Chain of Responsibility</h4>
+                    <p class="text-white-50">Order validation through sequential business handlers.</p>
+
+                    <button class="btn btn-success"
+                            onclick="runPatternDemo('/PatternLabApi/RunOrderValidation', 'chainResult')">
+                        Run Live Demo
+                    </button>
+
+                    <pre id="chainResult"
+                         class="mt-3 p-3"
+                         style="background:#070713;color:#77D6FF;border-radius:14px;min-height:180px;white-space:pre-wrap;font-size:13px;">
+Waiting for live result...
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="pt-5 pb-4">
     <div class="container">
         <div class="section_title text-center mb-5">
@@ -78,3 +171,29 @@
         </div>
     </div>
 </section>
+<script>
+    async function runPatternDemo(endpoint, resultElementId) {
+        const resultBox = document.getElementById(resultElementId);
+
+        resultBox.innerHTML = "Running live API demo...";
+        resultBox.style.color = "#77D6FF";
+
+        try {
+            const response = await fetch(endpoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+
+            const data = await response.json();
+
+            resultBox.innerHTML = JSON.stringify(data, null, 2);
+            resultBox.style.color = data.success ? "#77D6FF" : "#FF5D7A";
+        }
+        catch (error) {
+            resultBox.innerHTML = error.message;
+            resultBox.style.color = "#FF5D7A";
+        }
+    }
+</script>

@@ -37,7 +37,7 @@
             Code = "O",
             Name = "Observer Pattern",
             Scenario = "Order Approval Event",
-            Description = "Triggers email notification, stock movement and notification logging after approval.",
+            Description = "Triggers email notification, stock movement and notification logging after order approval.",
             Endpoint = "POST /api/OrderEvents/approve",
             Status = "Active"
         },
@@ -62,156 +62,145 @@
     };
 }
 
-<div class="premium-hero">
-    <div class="premium-hero-grid">
+<div class="v3-demo-hero">
+    <div class="v3-demo-hero-grid">
         <div>
-            <div class="admin-kicker">
-                Pattern Demo Registry
-            </div>
+            <div class="v2-kicker">Pattern Demo Registry</div>
 
-            <h1 class="premium-title">
+            <h1 class="v3-demo-title">
                 Enterprise Pattern Scenario Management
             </h1>
 
-            <p class="premium-desc">
-                Centralized admin registry for all implemented design pattern scenarios.
-                Each scenario is mapped to a real WebAPI endpoint and demonstrated through the public Pattern Lab.
+            <p class="v3-demo-desc">
+                Centralized admin registry for every implemented design pattern scenario.
+                Each module is connected to a real WebAPI endpoint and presented as a testable business case.
             </p>
 
-            <div class="premium-actions">
-                <a href="/PatternLab/Index" class="premium-btn">
-                    Open Public Pattern Lab
-                </a>
-
-                <a href="/Admin/Dashboard/Index" class="premium-btn outline">
-                    Back to Dashboard
-                </a>
+            <div class="v2-actions">
+                <a href="/PatternLab/Index" class="v2-btn">Open Public Pattern Lab</a>
+                <a href="/Admin/Dashboard/Index" class="v2-btn outline">Back to Dashboard</a>
             </div>
         </div>
 
-        <div class="premium-score-card">
-            <div class="score-value">6</div>
-            <div class="score-label">Registered Pattern Modules</div>
+        <div class="v3-score-panel">
+            <div class="v3-score-number">6</div>
+            <div class="v3-score-text">Registered Pattern Modules</div>
 
-            <div class="score-bars">
-                <div class="score-bar"><span style="width:100%"></span></div>
-                <div class="score-bar"><span style="width:90%"></span></div>
-                <div class="score-bar"><span style="width:84%"></span></div>
-            </div>
+            <div class="v2-score-bar"><span style="width:100%"></span></div>
+            <div class="v2-score-bar"><span style="width:92%"></span></div>
+            <div class="v2-score-bar"><span style="width:86%"></span></div>
         </div>
     </div>
 </div>
 
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-top">
-            <div class="stat-icon-wrap green"></div>
-            <span class="stat-change up">Behavioral</span>
+<div class="v2-stats">
+    <div class="v2-card">
+        <div class="v2-stat-top">
+            <div class="v2-stat-icon">BP</div>
+            <div class="v2-stat-tag">Behavioral</div>
         </div>
-        <div class="stat-val">5</div>
-        <div class="stat-label">Business Pattern Scenarios</div>
+        <div class="v2-stat-value">5</div>
+        <div class="v2-stat-label">Business Pattern Scenarios</div>
     </div>
 
-    <div class="stat-card">
-        <div class="stat-top">
-            <div class="stat-icon-wrap gold"></div>
-            <span class="stat-change up">Core</span>
+    <div class="v2-card">
+        <div class="v2-stat-top">
+            <div class="v2-stat-icon">AP</div>
+            <div class="v2-stat-tag">Core</div>
         </div>
-        <div class="stat-val">3</div>
-        <div class="stat-label">Architecture Patterns</div>
+        <div class="v2-stat-value">3</div>
+        <div class="v2-stat-label">Architecture Patterns</div>
     </div>
 
-    <div class="stat-card">
-        <div class="stat-top">
-            <div class="stat-icon-wrap blue"></div>
-            <span class="stat-change up">API</span>
+    <div class="v2-card">
+        <div class="v2-stat-top">
+            <div class="v2-stat-icon">EP</div>
+            <div class="v2-stat-tag">Swagger</div>
         </div>
-        <div class="stat-val">6</div>
-        <div class="stat-label">Demo Endpoints</div>
+        <div class="v2-stat-value">6</div>
+        <div class="v2-stat-label">Demo Endpoints</div>
     </div>
 
-    <div class="stat-card">
-        <div class="stat-top">
-            <div class="stat-icon-wrap red"></div>
-            <span class="stat-change up">Ready</span>
+    <div class="v2-card">
+        <div class="v2-stat-top">
+            <div class="v2-stat-icon">OK</div>
+            <div class="v2-stat-tag">Ready</div>
         </div>
-        <div class="stat-val">100%</div>
-        <div class="stat-label">Pattern Lab Coverage</div>
+        <div class="v2-stat-value">100%</div>
+        <div class="v2-stat-label">Pattern Lab Coverage</div>
     </div>
 </div>
 
-<div class="demo-flow-strip">
-    <div class="demo-flow-item">
+<div class="v3-demo-flow">
+    <div class="v3-flow-card">
+        <div class="v3-flow-number">1</div>
         <strong>Controller</strong>
-        <span>Receives API request</span>
+        <span>Receives the HTTP request from Swagger or Pattern Lab.</span>
     </div>
 
-    <div class="demo-flow-item">
+    <div class="v3-flow-card">
+        <div class="v3-flow-number">2</div>
         <strong>MediatR</strong>
-        <span>Routes command/query</span>
+        <span>Routes command or query to the correct handler.</span>
     </div>
 
-    <div class="demo-flow-item">
+    <div class="v3-flow-card">
+        <div class="v3-flow-number">3</div>
         <strong>Handler</strong>
-        <span>Executes business case</span>
+        <span>Executes the selected application use case.</span>
     </div>
 
-    <div class="demo-flow-item">
+    <div class="v3-flow-card">
+        <div class="v3-flow-number">4</div>
         <strong>Pattern</strong>
-        <span>Applies design logic</span>
+        <span>Applies the relevant enterprise design pattern.</span>
     </div>
 
-    <div class="demo-flow-item">
+    <div class="v3-flow-card">
+        <div class="v3-flow-number">5</div>
         <strong>Response</strong>
-        <span>Returns demo result</span>
+        <span>Returns a clear and testable business result.</span>
     </div>
 </div>
 
-<div class="demo-grid">
+<div class="v3-demo-grid">
     @foreach (var pattern in patterns)
     {
-        <div class="demo-card">
-            <div class="demo-card-header">
-                <div class="demo-index">@pattern.Code</div>
-                <span class="demo-status">@pattern.Status</span>
+        <div class="v3-demo-card">
+            <div class="v3-demo-top">
+                <div class="v3-demo-code">@pattern.Code</div>
+                <div class="v3-demo-badge">@pattern.Status</div>
             </div>
 
-            <h3 class="demo-title">@pattern.Name</h3>
+            <h3>@pattern.Name</h3>
 
-            <div class="demo-scenario">
-                <strong style="color:var(--text-primary);">@pattern.Scenario</strong>
-                <br />
+            <div class="v3-demo-scenario">
+                @pattern.Scenario
+            </div>
+
+            <p>
                 @pattern.Description
+            </p>
+
+            <div class="v3-endpoint-box">
+                <div class="v3-endpoint-label">Endpoint</div>
+                <div class="v3-endpoint-code">@pattern.Endpoint</div>
             </div>
 
-            <div class="demo-endpoint">
-                <span>Endpoint</span>
-                <code>@pattern.Endpoint</code>
-            </div>
-
-            <div class="demo-footer">
-                <a href="/PatternLab/Index" class="demo-link">
-                    View public demo
-                </a>
-
-                <span class="status-pill active">
-                    Testable
-                </span>
+            <div class="v3-card-actions">
+                <a href="/PatternLab/Index" class="v3-mini-btn">View Demo</a>
+                <a href="/Admin/Dashboard/Index" class="v3-mini-btn secondary">Details</a>
             </div>
         </div>
     }
 </div>
 
-<div class="bottom-grid">
-    <div class="table-card">
-        <div class="table-header">
-            <div>
-                <div class="chart-title">Pattern Demo Registry Table</div>
-                <div class="chart-sub">Admin overview of testable design pattern endpoints</div>
-            </div>
-        </div>
+<div class="v2-grid-2">
+    <div class="v3-registry-card">
+        <div class="v2-section-title">Pattern Demo Registry Table</div>
+        <div class="v2-section-sub">Admin overview of testable design pattern endpoints</div>
 
-        <table>
+        <table class="v2-table">
             <thead>
                 <tr>
                     <th>Pattern</th>
@@ -225,57 +214,42 @@
                 @foreach (var pattern in patterns)
                 {
                     <tr>
-                        <td>
-                            <div class="td-img">
-                                <div class="prod-thumb">@pattern.Code</div>
-                                <div>
-                                    <div class="prod-name">@pattern.Name</div>
-                                    <div style="font-size:11px;color:var(--text-muted)">Design Pattern</div>
-                                </div>
-                            </div>
-                        </td>
-
-                        <td style="color:var(--text-secondary)">
-                            @pattern.Scenario
-                        </td>
-
-                        <td>
-                            <code style="color:var(--accent-text)">
-                                @pattern.Endpoint
-                            </code>
-                        </td>
-
-                        <td>
-                            <span class="status-pill active">@pattern.Status</span>
-                        </td>
+                        <td><strong>@pattern.Name</strong></td>
+                        <td>@pattern.Scenario</td>
+                        <td><span class="v2-code">@pattern.Endpoint</span></td>
+                        <td><span class="v2-status">@pattern.Status</span></td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
 
-    <div class="activity-card">
-        <div class="activity-title">Admin Review Notes</div>
+    <div class="v3-registry-card">
+        <div class="v2-section-title">Admin Review Notes</div>
+        <div class="v2-section-sub">Why this project is stronger than a basic pattern sample</div>
 
-        <div class="activity-list">
-            <div class="activity-item">
-                <div class="activity-dot green"></div>
-                <div class="activity-text">
-                    <strong>Pattern isolation</strong> keeps every algorithm or behavior in its own focused class.
+        <div class="v2-activity">
+            <div class="v2-activity-row">
+                <div class="v2-dot"></div>
+                <div>
+                    <div class="v2-activity-title">Pattern Isolation</div>
+                    <div class="v2-activity-sub">Each algorithm or behavior lives inside its own focused class structure.</div>
                 </div>
             </div>
 
-            <div class="activity-item">
-                <div class="activity-dot gold"></div>
-                <div class="activity-text">
-                    <strong>Swagger-first testing</strong> makes every pattern scenario easy to verify.
+            <div class="v2-activity-row">
+                <div class="v2-dot"></div>
+                <div>
+                    <div class="v2-activity-title">Swagger-first Testing</div>
+                    <div class="v2-activity-sub">Every pattern scenario is mapped to a clear API endpoint.</div>
                 </div>
             </div>
 
-            <div class="activity-item">
-                <div class="activity-dot blue"></div>
-                <div class="activity-text">
-                    <strong>Admin registry</strong> gives the project a premium portfolio presentation layer.
+            <div class="v2-activity-row">
+                <div class="v2-dot"></div>
+                <div>
+                    <div class="v2-activity-title">Portfolio Presentation</div>
+                    <div class="v2-activity-sub">The admin panel explains the architecture instead of only listing CRUD records.</div>
                 </div>
             </div>
         </div>

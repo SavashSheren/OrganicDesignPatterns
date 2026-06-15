@@ -48,4 +48,19 @@ public class OrdersController : Controller
 
         return RedirectToAction("Index");
     }
+
+    public IActionResult Detail(string orderNumber)
+    {
+        var orders = HttpContext.Session.GetObjectFromJson<List<DemoOrderViewModel>>(DemoOrdersSessionKey)
+                     ?? new List<DemoOrderViewModel>();
+
+        var order = orders.FirstOrDefault(x => x.OrderNumber == orderNumber);
+
+        if (order == null)
+        {
+            return RedirectToAction("Index");
+        }
+
+        return View(order);
+    }
 }

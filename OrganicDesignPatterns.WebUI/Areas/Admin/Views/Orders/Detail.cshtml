@@ -1,0 +1,203 @@
+﻿@model OrganicDesignPatterns.WebUI.Models.DemoOrderViewModel
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Order Detail";
+    ViewData["Subtitle"] = "Demo order operation detail";
+}
+
+<div class="v2-hero">
+    <div class="v2-hero-grid">
+        <div>
+            <div class="v2-kicker">Order Detail</div>
+
+            <h1 class="v2-hero-title">
+                @Model.OrderNumber
+            </h1>
+
+            <p class="v2-hero-desc">
+                This page displays the selected demo order and explains how the checkout flow can be connected
+                with Chain of Responsibility, Observer Pattern and Factory Method.
+            </p>
+
+            <div class="v2-actions">
+                <a href="/Admin/Orders/Approve?orderNumber=@Model.OrderNumber" class="v2-btn">
+                    Approve Order
+                </a>
+
+                <a href="/Admin/Orders/Cancel?orderNumber=@Model.OrderNumber" class="v2-btn outline">
+                    Cancel Order
+                </a>
+
+                <a href="/Admin/Orders/Index" class="v2-btn outline">
+                    Back to Orders
+                </a>
+            </div>
+        </div>
+
+        <div class="v2-score">
+            <div class="v2-score-value">$@Model.TotalPrice</div>
+            <div class="v2-score-label">Total Order Amount</div>
+
+            <div class="v2-score-bar"><span style="width:92%"></span></div>
+            <div class="v2-score-bar"><span style="width:78%"></span></div>
+            <div class="v2-score-bar"><span style="width:66%"></span></div>
+        </div>
+    </div>
+</div>
+
+<div class="v2-stats">
+    <div class="v2-card">
+        <div class="v2-stat-top">
+            <div class="v2-stat-icon">ST</div>
+            <div class="v2-stat-tag">Status</div>
+        </div>
+        <div class="v2-stat-value">@Model.Status</div>
+        <div class="v2-stat-label">Current Order Status</div>
+    </div>
+
+    <div class="v2-card">
+        <div class="v2-stat-top">
+            <div class="v2-stat-icon">IT</div>
+            <div class="v2-stat-tag">Items</div>
+        </div>
+        <div class="v2-stat-value">@Model.Items.Sum(x => x.Quantity)</div>
+        <div class="v2-stat-label">Total Product Quantity</div>
+    </div>
+
+    <div class="v2-card">
+        <div class="v2-stat-top">
+            <div class="v2-stat-icon">PM</div>
+            <div class="v2-stat-tag">Payment</div>
+        </div>
+        <div class="v2-stat-value" style="font-size:24px;">@Model.PaymentMethod</div>
+        <div class="v2-stat-label">Selected Payment Method</div>
+    </div>
+
+    <div class="v2-card">
+        <div class="v2-stat-top">
+            <div class="v2-stat-icon">DT</div>
+            <div class="v2-stat-tag">Date</div>
+        </div>
+        <div class="v2-stat-value" style="font-size:22px;">
+            @Model.OrderDate.ToString("dd MMM")
+        </div>
+        <div class="v2-stat-label">@Model.OrderDate.ToString("yyyy HH:mm")</div>
+    </div>
+</div>
+
+<div class="v2-grid-2">
+    <div class="v2-card">
+        <div class="v2-section-title">Customer Information</div>
+        <div class="v2-section-sub">Checkout form data submitted by the customer</div>
+
+        <table class="v2-table">
+            <tbody>
+                <tr>
+                    <td><strong>Full Name</strong></td>
+                    <td>@Model.CustomerName</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Email</strong></td>
+                    <td>@Model.Email</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Phone</strong></td>
+                    <td>@Model.Phone</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Shipping Address</strong></td>
+                    <td>@Model.ShippingAddress</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="v2-card">
+        <div class="v2-section-title">Pattern Execution Flow</div>
+        <div class="v2-section-sub">How this order can trigger enterprise design patterns</div>
+
+        <div class="v2-activity">
+            <div class="v2-activity-row">
+                <div class="v2-dot"></div>
+                <div>
+                    <div class="v2-activity-title">Chain of Responsibility</div>
+                    <div class="v2-activity-sub">
+                        Customer, basket, stock, payment and address validation.
+                    </div>
+                </div>
+            </div>
+
+            <div class="v2-activity-row">
+                <div class="v2-dot"></div>
+                <div>
+                    <div class="v2-activity-title">Observer Pattern</div>
+                    <div class="v2-activity-sub">
+                        Approval can trigger stock movement, notification log and email observer.
+                    </div>
+                </div>
+            </div>
+
+            <div class="v2-activity-row">
+                <div class="v2-dot"></div>
+                <div>
+                    <div class="v2-activity-title">Factory Method</div>
+                    <div class="v2-activity-sub">
+                        Status based mail template can be generated after order action.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="v2-card">
+    <div class="v2-section-title">Order Items</div>
+    <div class="v2-section-sub">Products included in this demo order</div>
+
+    <table class="v2-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        <div style="display:flex;align-items:center;gap:12px;">
+                            <div style="width:58px;height:52px;border-radius:14px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;padding:8px;">
+                                <img src="@item.ImageUrl"
+                                     alt="@item.ProductName"
+                                     style="max-width:100%;max-height:42px;object-fit:contain;" />
+                            </div>
+
+                            <strong>@item.ProductName</strong>
+                        </div>
+                    </td>
+
+                    <td>@item.CategoryName</td>
+
+                    <td>
+                        <span class="v2-code">$@item.UnitPrice</span>
+                    </td>
+
+                    <td>@item.Quantity</td>
+
+                    <td>
+                        <span class="v2-status">$@item.TotalPrice</span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,10 +1,18 @@
-﻿@{
+﻿@using OrganicDesignPatterns.WebUI.Extensions
+@using OrganicDesignPatterns.WebUI.Models
+
+@{
     var path = Context.Request.Path.ToString().ToLower();
 
     string Active(string value)
     {
         return path.Contains(value.ToLower()) ? "active" : "";
     }
+
+    var demoOrders = Context.Session.GetObjectFromJson<List<DemoOrderViewModel>>("DemoOrders")
+                     ?? new List<DemoOrderViewModel>();
+
+    var orderCount = demoOrders.Count;
 }
 
 <!DOCTYPE html>
@@ -49,6 +57,7 @@
                 <a class="v2-nav-item @Active("/admin/orders")" href="/Admin/Orders/Index">
                     <span class="v2-nav-icon">◆</span>
                     <span class="v2-nav-text">Orders</span>
+                    <span class="v2-nav-badge">@orderCount</span>
                 </a>
 
                 <a class="v2-nav-item" href="/PatternLab/Index">

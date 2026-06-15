@@ -1,0 +1,178 @@
+﻿@model List<OrganicDesignPatterns.WebUI.Models.DemoOrderViewModel>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Orders";
+    ViewData["Subtitle"] = "Demo order management center";
+}
+
+<div class="v2-hero">
+    <div class="v2-hero-grid">
+        <div>
+            <div class="v2-kicker">Order Management</div>
+
+            <h1 class="v2-hero-title">
+                Demo Order Operations Center
+            </h1>
+
+            <p class="v2-hero-desc">
+                This admin page displays demo checkout orders and represents where Observer,
+                Factory Method and Chain of Responsibility patterns can be connected to real order events.
+            </p>
+        </div>
+
+        <div class="v2-score">
+            <div class="v2-score-value">@Model.Count</div>
+            <div class="v2-score-label">Demo Orders Created</div>
+
+            <div class="v2-score-bar"><span style="width:90%"></span></div>
+            <div class="v2-score-bar"><span style="width:76%"></span></div>
+            <div class="v2-score-bar"><span style="width:64%"></span></div>
+        </div>
+    </div>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="v2-card">
+        <div class="v2-section-title">No demo orders yet</div>
+        <div class="v2-section-sub">
+            Complete a checkout flow from the public website to see the order here.
+        </div>
+
+        <a href="/Products/Index" class="v2-btn">
+            Go to Products
+        </a>
+    </div>
+}
+else
+{
+    <div class="v2-card">
+        <div class="v2-section-title">Latest Demo Orders</div>
+        <div class="v2-section-sub">Session-based demo orders created from the public checkout flow</div>
+
+        <table class="v2-table">
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Pattern Flow</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>
+                            <strong>@order.OrderNumber</strong>
+                            <div style="font-size:11px;color:var(--v2-soft);">
+                                @order.Items.Count item type(s)
+                            </div>
+                        </td>
+
+                        <td>
+                            <strong>@order.CustomerName</strong>
+                            <div style="font-size:11px;color:var(--v2-soft);">
+                                @order.Email
+                            </div>
+                        </td>
+
+                        <td>
+                            @order.OrderDate.ToString("dd MMM yyyy HH:mm")
+                        </td>
+
+                        <td>
+                            <span class="v2-code">$@order.TotalPrice</span>
+                        </td>
+
+                        <td>
+                            <span class="v2-status">@order.Status</span>
+                        </td>
+
+                        <td>
+                            <span class="v2-code">
+                                Chain → Observer → Factory
+                            </span>
+                        </td>
+
+                        <td>
+                            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                                <a href="/Admin/Orders/Approve?orderNumber=@order.OrderNumber" class="v3-mini-btn">
+                                    Approve
+                                </a>
+
+                                <a href="/Admin/Orders/Cancel?orderNumber=@order.OrderNumber" class="v3-mini-btn secondary">
+                                    Cancel
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="v2-grid-2" style="margin-top:26px;">
+        <div class="v2-card">
+            <div class="v2-section-title">Order Pattern Explanation</div>
+            <div class="v2-section-sub">How this demo order flow maps to design patterns</div>
+
+            <div class="v2-activity">
+                <div class="v2-activity-row">
+                    <div class="v2-dot"></div>
+                    <div>
+                        <div class="v2-activity-title">Chain of Responsibility</div>
+                        <div class="v2-activity-sub">
+                            Validates customer information, basket, stock, payment and shipping address.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="v2-activity-row">
+                    <div class="v2-dot"></div>
+                    <div>
+                        <div class="v2-activity-title">Observer Pattern</div>
+                        <div class="v2-activity-sub">
+                            Can trigger stock movement, notification logs and email events after approval.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="v2-activity-row">
+                    <div class="v2-dot"></div>
+                    <div>
+                        <div class="v2-activity-title">Factory Method</div>
+                        <div class="v2-activity-sub">
+                            Generates status-based order mail templates.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="v2-card">
+            <div class="v2-section-title">Latest Order Items</div>
+            <div class="v2-section-sub">Products included in the newest order</div>
+
+            @foreach (var item in Model.First().Items)
+            {
+                <div class="v2-activity-row">
+                    <div class="v2-dot"></div>
+                    <div>
+                        <div class="v2-activity-title">
+                            @item.ProductName × @item.Quantity
+                        </div>
+                        <div class="v2-activity-sub">
+                            @item.CategoryName · $@item.TotalPrice
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

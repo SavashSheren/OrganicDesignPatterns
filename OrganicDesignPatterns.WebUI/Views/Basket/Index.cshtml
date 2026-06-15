@@ -1,0 +1,147 @@
+﻿@model List<OrganicDesignPatterns.WebUI.Models.BasketItemViewModel>
+
+@{
+    var totalPrice = ViewBag.TotalPrice as decimal? ?? 0;
+    var totalQuantity = ViewBag.TotalQuantity as int? ?? 0;
+}
+
+<section class="cart_section sec_ptb_100">
+    <div class="container">
+        <div class="section_title text-center mb-5">
+            <span class="sub_title text-uppercase fw-bold" style="color:#81c408;">
+                Organic Basket
+            </span>
+
+            <h2 class="title_text mb-3">
+                Shopping Basket Demo
+            </h2>
+
+            <p class="mx-auto" style="max-width:720px;">
+                This basket demonstrates a simple session-based shopping flow connected to product showcase scenarios.
+            </p>
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="text-center p-5 shadow-sm" style="border-radius:24px;background:#fff;">
+                <h3 class="mb-3">Your basket is empty</h3>
+
+                <p class="text-muted mb-4">
+                    Add organic products to test the shopping flow.
+                </p>
+
+                <a href="/Products/Index" class="btn btn-success px-4 py-3">
+                    Browse Products
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="shadow-sm bg-white" style="border-radius:24px;overflow:hidden;">
+                        @foreach (var item in Model)
+                        {
+                            <div class="d-flex align-items-center gap-4 p-4 border-bottom">
+                                <div style="width:120px;height:110px;background:#f8faf5;border-radius:18px;display:flex;align-items:center;justify-content:center;padding:16px;">
+                                    <img src="@item.ImageUrl"
+                                         alt="@item.ProductName"
+                                         style="max-width:100%;max-height:90px;object-fit:contain;" />
+                                </div>
+
+                                <div class="flex-grow-1">
+                                    <span class="badge bg-light text-success border mb-2">
+                                        @item.CategoryName
+                                    </span>
+
+                                    <h4 class="mb-1">@item.ProductName</h4>
+
+                                    <p class="text-muted mb-0">
+                                        Unit Price: <strong>$@item.UnitPrice</strong>
+                                    </p>
+                                </div>
+
+                                <div class="text-center">
+                                    <div class="d-flex align-items-center gap-2 justify-content-center">
+                                        <a href="/Basket/Decrease/@item.ProductId"
+                                           class="btn btn-sm btn-outline-success">
+                                            -
+                                        </a>
+
+                                        <span class="fw-bold px-2">
+                                            @item.Quantity
+                                        </span>
+
+                                        <a href="/Basket/Increase/@item.ProductId"
+                                           class="btn btn-sm btn-outline-success">
+                                            +
+                                        </a>
+                                    </div>
+
+                                    <div class="fw-bold text-success mt-3">
+                                        $@item.TotalPrice
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <a href="/Basket/Remove/@item.ProductId"
+                                       class="btn btn-sm btn-outline-danger">
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="mt-4 d-flex gap-3">
+                        <a href="/Products/Index" class="btn btn-outline-success px-4 py-3">
+                            Continue Shopping
+                        </a>
+
+                        <a href="/Basket/Clear" class="btn btn-outline-danger px-4 py-3">
+                            Clear Basket
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="shadow-sm bg-white p-4" style="border-radius:24px;">
+                        <h4 class="mb-4">Order Summary</h4>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Total Quantity</span>
+                            <strong>@totalQuantity</strong>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Subtotal</span>
+                            <strong>$@totalPrice</strong>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Shipping</span>
+                            <strong class="text-success">Free</strong>
+                        </div>
+
+                        <hr />
+
+                        <div class="d-flex justify-content-between mb-4">
+                            <span class="fw-bold">Total</span>
+                            <strong class="text-success fs-4">$@totalPrice</strong>
+                        </div>
+
+                        <a href="/Checkout/Index" class="btn btn-success w-100 py-3">
+                            Proceed to Checkout
+                        </a>
+
+                        <div class="p-3 mt-4" style="background:#f8faf5;border-radius:16px;">
+                            <small class="text-muted">
+                                Pattern note: This demo basket can later be connected to Observer, Stock Movement and Order Validation scenarios.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

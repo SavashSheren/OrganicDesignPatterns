@@ -1,4 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@using OrganicDesignPatterns.WebUI.Extensions
+@using OrganicDesignPatterns.WebUI.Models
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
+@{
+    var basketItems = Context.Session.GetObjectFromJson<List<BasketItemViewModel>>("OrganicBasket")
+                      ?? new List<BasketItemViewModel>();
+
+    var basketCount = basketItems.Sum(x => x.Quantity);
+
+    var apiBaseUrl = Configuration["ApiSettings:BaseUrl"] ?? "#";
+    var swaggerUrl = $"{apiBaseUrl}/swagger/index.html";
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -87,11 +100,32 @@
                                     <a class="nav-link" href="/Categories">Categories</a>
                                 </li>
                                 <li>
-                                    <a href="/Basket/Index">Basket</a>
+                                    <a href="/Basket/Index" style="position:relative;">
+                                        Basket
+
+                                        @if (basketCount > 0)
+                                        {
+                                            <span style="
+                display:inline-flex;
+                align-items:center;
+                justify-content:center;
+                min-width:20px;
+                height:20px;
+                padding:0 6px;
+                margin-left:5px;
+                border-radius:999px;
+                background:#81c408;
+                color:#fff;
+                font-size:11px;
+                font-weight:700;">
+                                                @basketCount
+                                            </span>
+                                        }
+                                    </a>
                                 </li>
 
                                 <li class="nav-item px-2">
-                                    <a class="nav-link" href="#" title="Run WebAPI project and open Swagger">API</a>
+                                    <a href="/swagger">API</a>
                                 </li>
                             </ul>
                         </div>
